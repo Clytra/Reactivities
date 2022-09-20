@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence;
 
@@ -10,9 +11,10 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220920212234_IdentityAdded")]
+    partial class IdentityAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.9");
@@ -53,100 +55,100 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e4915ad9-88fa-4e27-8381-cc90233be472"),
+                            Id = new Guid("81d552fe-c2f4-4dd8-9b81-40d5b93ac230"),
                             Category = "drinks",
                             City = "London",
-                            Date = new DateTime(2022, 7, 20, 23, 40, 38, 307, DateTimeKind.Local).AddTicks(3372),
+                            Date = new DateTime(2022, 7, 20, 23, 22, 34, 67, DateTimeKind.Local).AddTicks(6919),
                             Description = "Activity 2 months ago",
                             Title = "Past Activity 1",
                             Venue = "Pub"
                         },
                         new
                         {
-                            Id = new Guid("190b1ff3-b03b-4c87-9ce5-3c2e9486f663"),
+                            Id = new Guid("dc3a0b5a-45ee-43c7-8d3a-da61139e218b"),
                             Category = "culture",
                             City = "Paris",
-                            Date = new DateTime(2022, 8, 20, 23, 40, 38, 307, DateTimeKind.Local).AddTicks(3415),
+                            Date = new DateTime(2022, 8, 20, 23, 22, 34, 67, DateTimeKind.Local).AddTicks(6956),
                             Description = "Activity 1 month ago",
                             Title = "Past Activity 2",
                             Venue = "Louvre"
                         },
                         new
                         {
-                            Id = new Guid("7f1ee46e-ef3a-4cc8-855a-55aab0b053e5"),
+                            Id = new Guid("6387c951-c624-4544-941b-114e677bba2f"),
                             Category = "culture",
                             City = "London",
-                            Date = new DateTime(2022, 10, 20, 23, 40, 38, 307, DateTimeKind.Local).AddTicks(3420),
+                            Date = new DateTime(2022, 10, 20, 23, 22, 34, 67, DateTimeKind.Local).AddTicks(6960),
                             Description = "Activity 1 month in future",
                             Title = "Future Activity 1",
                             Venue = "Natural History Museum"
                         },
                         new
                         {
-                            Id = new Guid("b6427bd8-2d55-4f78-b99b-3107377e6ebc"),
+                            Id = new Guid("8d082f70-e5d5-4e70-8f03-c96dcc81617f"),
                             Category = "music",
                             City = "London",
-                            Date = new DateTime(2022, 11, 20, 23, 40, 38, 307, DateTimeKind.Local).AddTicks(3425),
+                            Date = new DateTime(2022, 11, 20, 23, 22, 34, 67, DateTimeKind.Local).AddTicks(6964),
                             Description = "Activity 2 months in future",
                             Title = "Future Activity 2",
                             Venue = "O2 Arena"
                         },
                         new
                         {
-                            Id = new Guid("b33cd1df-9bf6-4278-b0b3-86d9732dd52f"),
+                            Id = new Guid("7ae35dd2-b4cf-4aa4-ac08-5e7a08565449"),
                             Category = "drinks",
                             City = "London",
-                            Date = new DateTime(2022, 12, 20, 23, 40, 38, 307, DateTimeKind.Local).AddTicks(3430),
+                            Date = new DateTime(2022, 12, 20, 23, 22, 34, 67, DateTimeKind.Local).AddTicks(6968),
                             Description = "Activity 3 months in future",
                             Title = "Future Activity 3",
                             Venue = "Another pub"
                         },
                         new
                         {
-                            Id = new Guid("236ac476-eb34-4e42-8481-3d1c04d4ec9e"),
+                            Id = new Guid("2a6a840b-cad9-4be6-a88e-50fc8e1592ef"),
                             Category = "drinks",
                             City = "London",
-                            Date = new DateTime(2023, 1, 20, 23, 40, 38, 307, DateTimeKind.Local).AddTicks(3439),
+                            Date = new DateTime(2023, 1, 20, 23, 22, 34, 67, DateTimeKind.Local).AddTicks(6972),
                             Description = "Activity 4 months in future",
                             Title = "Future Activity 4",
                             Venue = "Yet another pub"
                         },
                         new
                         {
-                            Id = new Guid("5118d909-0c34-45f0-ae3c-104733c05d14"),
+                            Id = new Guid("6e730961-c8de-4e08-8d14-9bcc3d8bda0c"),
                             Category = "drinks",
                             City = "London",
-                            Date = new DateTime(2023, 2, 20, 23, 40, 38, 307, DateTimeKind.Local).AddTicks(3443),
+                            Date = new DateTime(2023, 2, 20, 23, 22, 34, 67, DateTimeKind.Local).AddTicks(6979),
                             Description = "Activity 5 months in future",
                             Title = "Future Activity 5",
                             Venue = "Just another pub"
                         },
                         new
                         {
-                            Id = new Guid("130bebc8-8b6d-4da0-aeec-8a20dce065e8"),
+                            Id = new Guid("ee86c7ce-c443-4612-9423-9141010b5b7a"),
                             Category = "music",
                             City = "London",
-                            Date = new DateTime(2023, 3, 20, 23, 40, 38, 307, DateTimeKind.Local).AddTicks(3448),
+                            Date = new DateTime(2023, 3, 20, 23, 22, 34, 67, DateTimeKind.Local).AddTicks(6983),
                             Description = "Activity 6 months in future",
                             Title = "Future Activity 6",
                             Venue = "Roundhouse Camden"
                         },
                         new
                         {
-                            Id = new Guid("92b85e8b-133f-49f0-9b6a-871466a5a05e"),
+                            Id = new Guid("019b17be-5052-4827-b4d9-72d81f3b4e79"),
                             Category = "travel",
                             City = "London",
-                            Date = new DateTime(2023, 4, 20, 23, 40, 38, 307, DateTimeKind.Local).AddTicks(3452),
+                            Date = new DateTime(2023, 4, 20, 23, 22, 34, 67, DateTimeKind.Local).AddTicks(6990),
                             Description = "Activity 2 months ago",
                             Title = "Future Activity 7",
                             Venue = "Somewhere on the Thames"
                         },
                         new
                         {
-                            Id = new Guid("90a25d47-4e09-4db9-9e94-8a50ef305b9e"),
+                            Id = new Guid("e11e5657-8036-428f-b68a-a581b9defe5c"),
                             Category = "film",
                             City = "London",
-                            Date = new DateTime(2023, 5, 20, 23, 40, 38, 307, DateTimeKind.Local).AddTicks(3456),
+                            Date = new DateTime(2023, 5, 20, 23, 22, 34, 67, DateTimeKind.Local).AddTicks(6995),
                             Description = "Activity 8 months in future",
                             Title = "Future Activity 8",
                             Venue = "Cinema"
@@ -223,53 +225,6 @@ namespace Persistence.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "3143654c-0b46-4d0a-b437-eccea597348d",
-                            AccessFailedCount = 0,
-                            Bio = "test",
-                            ConcurrencyStamp = "7144318e-8e17-425e-920d-e3a3cfebf3f1",
-                            DisplayName = "Jan",
-                            Email = "jan@test.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "af75aadf-ba68-4973-9bc7-780aa773e2ec",
-                            TwoFactorEnabled = false,
-                            UserName = "jan"
-                        },
-                        new
-                        {
-                            Id = "673de5d9-701d-4299-a62a-92997678d55b",
-                            AccessFailedCount = 0,
-                            Bio = "test",
-                            ConcurrencyStamp = "0d3385bd-0d9a-45c7-aef3-ed4b3602273d",
-                            DisplayName = "Kasia",
-                            Email = "kasia@test.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "4f7989b7-8075-4bda-9201-4dee967540ef",
-                            TwoFactorEnabled = false,
-                            UserName = "kasia"
-                        },
-                        new
-                        {
-                            Id = "1c2f0074-365c-49b6-b65f-079fde930a80",
-                            AccessFailedCount = 0,
-                            Bio = "test",
-                            ConcurrencyStamp = "ce3baf16-fa4a-4780-b1d4-c76b5cb2c46e",
-                            DisplayName = "Tomek",
-                            Email = "tomek@test.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "0d36b6d8-112c-46ad-9c37-cd14b3607dc0",
-                            TwoFactorEnabled = false,
-                            UserName = "tomek"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

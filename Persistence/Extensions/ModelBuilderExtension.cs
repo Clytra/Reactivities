@@ -1,12 +1,20 @@
 ﻿using Domain;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Persistence.Extensions
 {
     public static class ModelBuilderExtension
     {
-        public static void Seed(this ModelBuilder modelBuilder)
+        public static async void Seed(this ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<AppUser>()
+                .HasData(
+                    new AppUser { DisplayName = "Jan", UserName = "jan", Email = "jan@test.com" },
+                    new AppUser { DisplayName = "Kasia", UserName = "kasia", Email = "kasia@test.com" },
+                    new AppUser { DisplayName = "Tomek", UserName = "tomek", Email = "tomek@test.com" }
+                );
+
             modelBuilder.Entity<Activity>()
                 .HasData(
                    new Activity
