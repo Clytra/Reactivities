@@ -6,12 +6,17 @@ import HomePage from "../../features/home/HomePage";
 import ActivityDashboard from "../../features/activities/dashboard/ActivityDashboard";
 import ActivityForm from "../../features/activities/form/ActivityForm";
 import ActivityDetails from "../../features/activities/details/ActivityDetails";
+import TestErrors from "../../features/errors/TestError";
+import { ToastContainer } from "react-toastify";
+import NotFound from "../../features/errors/NotFound";
+import ServerError from "../../features/errors/ServerError";
 
 function App() {
   const location = useLocation();
 
   return (
     <>
+      <ToastContainer position="bottom-right" hideProgressBar />
       <NavBar />
       <Container style={{ marginTop: "7em" }}>
         <Routes>
@@ -28,6 +33,9 @@ function App() {
             path="/manage/:id"
             element={<ActivityForm />}
           />
+          <Route path="/errors" element={<TestErrors />} />
+          <Route path="/server-error" element={<ServerError />} />
+          <Route element={<NotFound />} />
         </Routes>
       </Container>
     </>
