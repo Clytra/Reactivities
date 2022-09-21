@@ -10,9 +10,9 @@ namespace Persistence.Extensions
         {
             modelBuilder.Entity<AppUser>()
                 .HasData(
-                    new AppUser { DisplayName = "Jan", UserName = "jan", Email = "jan@test.com" },
-                    new AppUser { DisplayName = "Kasia", UserName = "kasia", Email = "kasia@test.com" },
-                    new AppUser { DisplayName = "Tomek", UserName = "tomek", Email = "tomek@test.com" }
+                    new AppUser { DisplayName = "Jan", UserName = "jan", Email = "jan@test.com", PasswordHash = "P@@sword" },
+                    new AppUser { DisplayName = "Kasia", UserName = "kasia", Email = "kasia@test.com", PasswordHash = "P@@sword" },
+                    new AppUser { DisplayName = "Tomek", UserName = "tomek", Email = "tomek@test.com", PasswordHash = "P@@sword" }
                 );
 
             modelBuilder.Entity<Activity>()
