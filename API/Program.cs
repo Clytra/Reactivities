@@ -2,12 +2,20 @@ using API.Extensions;
 using API.Middleware;
 using Application.Activties;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers().AddFluentValidation(config =>
+builder.Services.AddIdentityServices(builder.Configuration);
+builder.Services.AddControllers(opt =>
+{
+    var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+    opt.Filters.Add(new AuthorizeFilter(policy));
+})
+    .AddFluentValidation(config =>
 {
     config.RegisterValidatorsFromAssemblyContaining<Create>();
 });
@@ -34,6 +42,7 @@ app.UseCors("CorsPolicy");
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
