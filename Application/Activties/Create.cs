@@ -1,11 +1,9 @@
 ﻿using Application.Common.Interfaces;
 using Application.Core;
-using Application.Interfaces;
-using Domain;
 using Domain.Entities;
 using FluentValidation;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace Application.Activties
 {
@@ -27,22 +25,33 @@ namespace Application.Activties
         public class Handler : IRequestHandler<Command, Result<Unit>>
         {
             private readonly IDataContext _context;
-            private readonly IUserAccessor _userAccessor;
+            private readonly ICurrentUserService _currentUserService;
+            private readonly UserManager<AppUser> _userManager;
 
-            public Handler(IDataContext context, IUserAccessor userAccessor)
+            public Handler(IDataContext context, 
+                ICurrentUserService currentUserService, 
+                UserManager<AppUser> userManager)
             {
+                _userManager = userManager;
                 _context = context;
-                _userAccessor = userAccessor;
+                _currentUserService = currentUserService;
             }
 
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
-                var user = await _context.Users.FirstOrDefaultAsync
-                    (x => x.UserName == _userAccessor.GetUserName());
+                var userId = _currentUserService.UserId ?? string.Empty;
+                string userName = string.Empty;
+
+                // TODO Modify auditing user
+
+                if (!string.IsNullOrEmpty(userId))
+                {
+                    //userName = await _userManager.GetUserName(userId);
+                }
 
                 var attendee = new ActivityAttendee
                 {
-                    AppUser = user,
+                    //AppUser = user,
                     Activity = request.Activity,
                     IsHost = true
                 };

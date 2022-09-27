@@ -18,11 +18,15 @@ namespace Application.Activties
         {
             private readonly IDataContext _context;
             private readonly IUserAccessor _userAccessor;
+            private readonly ICurrentUserService _currentUserService;
 
-            public Handler(IDataContext context, IUserAccessor userAccessor)
+            public Handler(IDataContext context, 
+                IUserAccessor userAccessor, 
+                ICurrentUserService currentUserService)
             {
                 _context = context;
                 _userAccessor = userAccessor;
+                _currentUserService = currentUserService;
             }
 
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
@@ -33,8 +37,8 @@ namespace Application.Activties
 
                 if (activity == null) return null;
 
-                var user = await _context.Users
-                    .FirstOrDefaultAsync(x => x.UserName == _userAccessor.GetUserName());
+                var userId = _currentUserService.UserId ?? string.Empty;
+                string userName = string.Empty;
 
                 if (user == null) return null;
 

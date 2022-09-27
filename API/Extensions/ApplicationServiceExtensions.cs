@@ -1,11 +1,6 @@
-﻿using Application.Activties;
-using Application.Core;
-using Application.Interfaces;
+﻿using Application.Interfaces;
 using Infrastructure.Security;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using Persistence;
 
 namespace API.Extensions
 {
