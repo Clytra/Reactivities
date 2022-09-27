@@ -48,8 +48,6 @@ namespace API.Extensions
                     builder.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
                 }));
 
-            services.AddMediatR(typeof(List.Handler).Assembly);
-            services.AddAutoMapper(typeof(MappingProfiles).Assembly);
             services.AddScoped<IUserAccessor, UserAccessor>();
 
             return services;

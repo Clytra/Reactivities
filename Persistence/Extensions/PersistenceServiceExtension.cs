@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Application.Common.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -15,6 +16,8 @@ namespace Persistence.Extensions
             {
                 opt.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddScoped<IDataContext, DataContext>();
 
             return services;
         }
