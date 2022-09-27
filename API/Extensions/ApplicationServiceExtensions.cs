@@ -4,7 +4,9 @@ using Application.Interfaces;
 using Infrastructure.Security;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using Persistence;
+using System.Reflection;
 
 namespace API.Extensions
 {
@@ -13,7 +15,30 @@ namespace API.Extensions
         public static IServiceCollection AddApplicationServices
             (this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddSwaggerGen();
+            // TODO: TermsOfService + License
+            services.AddSwaggerGen(swagger =>
+            {
+                swagger.SwaggerDoc("v1",
+                new OpenApiInfo
+                {
+                    Title = "Reactivities",
+                    Version = "v1",
+                    TermsOfService = new Uri(""),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Karolina",
+                        Email = "karolina.agata.kowalska@gmail.com",
+                        Url = new Uri("")
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "",
+                        Url = new Uri("")
+                    }
+                });
+                var filePath = Path.Combine(AppContext.BaseDirectory, "Reactivities.xml");
+                swagger.IncludeXmlComments(filePath);
+            });
 
             // TODO: Db service providers with migration
 

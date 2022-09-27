@@ -25,6 +25,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddApplicationServices(builder.Configuration);
 
+
 var app = builder.Build();
 
 app.UseMiddleware<ExceptionMiddleware>();
@@ -33,7 +34,8 @@ app.UseMiddleware<ExceptionMiddleware>();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(swagger => swagger
+    .SwaggerEndpoint("/swagger/v1/swagger.json", "Reactivities"));
 }
 
 app.UseRouting();
