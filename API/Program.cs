@@ -38,6 +38,8 @@ if (app.Environment.IsDevelopment())
     .SwaggerEndpoint("/swagger/v1/swagger.json", "Reactivities"));
 }
 
+app.UseHealthChecks("/hc");
+
 app.UseRouting();
 
 app.UseCors("CorsPolicy");

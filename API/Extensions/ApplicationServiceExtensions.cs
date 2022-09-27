@@ -40,6 +40,8 @@ namespace API.Extensions
                 swagger.IncludeXmlComments(filePath);
             });
 
+            services.AddHealthChecks();
+
             // TODO: Db service providers with migration
 
             #region Register Containers
