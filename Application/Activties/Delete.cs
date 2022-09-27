@@ -1,6 +1,6 @@
-﻿using Application.Core;
+﻿using Application.Common.Interfaces;
+using Application.Core;
 using MediatR;
-using Persistence;
 
 namespace Application.Activties
 {
@@ -13,9 +13,9 @@ namespace Application.Activties
 
         public class Handler : IRequestHandler<Command, Result<Unit>>
         {
-            private readonly DataContext _context;
+            private readonly IDataContext _context;
 
-            public Handler(DataContext context)
+            public Handler(IDataContext context)
             {
                 _context = context;
             }
@@ -26,9 +26,9 @@ namespace Application.Activties
 
                 //if (activity == null) return null;
 
-                _context.Remove(activity);
+                _context.Activities.Remove(activity);
 
-                var result = await _context.SaveChangesAsync() > 0;
+                var result = await _context.SaveChangesAsync(cancellationToken) > 0;
 
                 if (!result) return Result<Unit>.Failure("Failed to delete the activity");
 

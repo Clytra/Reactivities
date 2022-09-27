@@ -2,6 +2,7 @@ using API.Extensions;
 using API.Middleware;
 using Application.Activties;
 using FluentValidation.AspNetCore;
+using Infrastructure.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Persistence.Extensions;
@@ -26,7 +27,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddPersistenceServices(builder.Configuration);
-
+builder.Services.AddInfrastructureServices(builder.Configuration);
 
 var app = builder.Build();
 

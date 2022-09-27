@@ -1,9 +1,9 @@
-﻿using Application.Core;
+﻿using Application.Common.Interfaces;
+using Application.Core;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Persistence;
 
 namespace Application.Activties
 {
@@ -13,10 +13,10 @@ namespace Application.Activties
 
         public class Handler : IRequestHandler<Query, Result<List<ActivityDto>>>
         {
-            private readonly DataContext _context;
+            private readonly IDataContext _context;
             private readonly IMapper _mapper;
 
-            public Handler(DataContext context, IMapper mapper)
+            public Handler(IDataContext context, IMapper mapper)
             {
                 _context = context;
                 _mapper = mapper;
