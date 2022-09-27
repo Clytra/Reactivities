@@ -1,6 +1,6 @@
 ﻿using Application.Core;
 using AutoMapper;
-using Domain;
+using Domain.Entities;
 using FluentValidation;
 using MediatR;
 using Persistence;

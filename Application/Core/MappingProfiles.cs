@@ -1,6 +1,6 @@
 ﻿using Application.Activties;
 using AutoMapper;
-using Domain;
+using Domain.Entities;
 
 namespace Application.Core
 {

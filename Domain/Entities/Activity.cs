@@ -1,6 +1,8 @@
-﻿namespace Domain
+﻿using Domain.Common;
+
+namespace Domain.Entities
 {
-    public class Activity
+    public class Activity : AuditableEntity
     {
         public Guid Id { get; set; }
         public string Title { get; set; }

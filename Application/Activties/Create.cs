@@ -1,6 +1,7 @@
 ﻿using Application.Core;
 using Application.Interfaces;
 using Domain;
+using Domain.Entities;
 using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
