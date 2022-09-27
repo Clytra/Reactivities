@@ -53,13 +53,12 @@ namespace API.Extensions
 
             #endregion
 
-            services.AddCors(opt =>
-            {
-                opt.AddPolicy("CorsPolicy", policy =>
+            services.AddCors(options =>
+                options.AddPolicy(name: "CorsPolicy",
+                builder =>
                 {
-                    policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
-                });
-            });
+                    builder.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
+                }));
 
             services.AddMediatR(typeof(List.Handler).Assembly);
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);

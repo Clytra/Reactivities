@@ -1,10 +1,12 @@
 ﻿using Application.Activties;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+    [EnableCors("CorsPolicy")]
     public class ActivitiesController : BaseApiController
     {
         /// <summary>
