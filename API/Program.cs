@@ -4,6 +4,7 @@ using Application.Activties;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Persistence.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,7 @@ builder.Services.AddControllers(opt =>
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddApplicationServices(builder.Configuration);
+builder.Services.AddPersistenceServices(builder.Configuration);
 
 
 var app = builder.Build();

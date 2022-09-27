@@ -1,6 +1,5 @@
 ﻿using Domain.Common;
 using Domain.Entities;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +20,8 @@ namespace Persistence
         {
             options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
         }
+
+        // TODO DesignTimeDbContextFactoryBase
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

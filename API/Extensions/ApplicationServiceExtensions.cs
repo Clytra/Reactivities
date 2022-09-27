@@ -6,7 +6,6 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Persistence;
-using System.Reflection;
 
 namespace API.Extensions
 {
@@ -41,17 +40,6 @@ namespace API.Extensions
             });
 
             services.AddHealthChecks();
-
-            // TODO: Db service providers with migration
-
-            #region Register Containers
-
-            services.AddDbContext<DataContext>(opt =>
-            {
-                opt.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
-            });
-
-            #endregion
 
             services.AddCors(options =>
                 options.AddPolicy(name: "CorsPolicy",
