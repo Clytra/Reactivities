@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Persistence.Extensions;
+using System.Reflection;
 
 namespace Persistence
 {
@@ -25,20 +26,9 @@ namespace Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             modelBuilder.Seed();
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<ActivityAttendee>(x => x.HasKey(aa => new { aa.AppUserId, aa.ActivityId }));
-
-            modelBuilder.Entity<ActivityAttendee>()
-                .HasOne(u => u.AppUser)
-                .WithMany(a => a.Activities)
-                .HasForeignKey(aa => aa.AppUserId);
-
-            modelBuilder.Entity<ActivityAttendee>()
-                .HasOne(u => u.Activity)
-                .WithMany(a => a.Attendees)
-                .HasForeignKey(aa => aa.ActivityId);
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
