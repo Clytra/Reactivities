@@ -38,7 +38,7 @@ namespace Application.Activties
                 if (activity == null) return null;
 
                 var userId = _currentUserService.UserId ?? string.Empty;
-                string userName = string.Empty;
+                var user = await _context.Users.FindAsync(userId);
 
                 if (user == null) return null;
 
