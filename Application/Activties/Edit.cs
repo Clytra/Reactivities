@@ -1,9 +1,9 @@
-﻿using Application.Core;
+﻿using Application.Common.Interfaces;
+using Application.Core;
 using AutoMapper;
-using Domain;
+using Domain.Entities;
 using FluentValidation;
 using MediatR;
-using Persistence;
 
 namespace Application.Activties
 {
@@ -24,10 +24,10 @@ namespace Application.Activties
 
         public class Handler : IRequestHandler<Command, Result<Unit>>
         {
-            private readonly DataContext _context;
+            private readonly IDataContext _context;
             private readonly IMapper _mapper;
 
-            public Handler(DataContext context, IMapper mapper)
+            public Handler(IDataContext context, IMapper mapper)
             {
                 _context = context;
                 _mapper = mapper;
@@ -41,7 +41,7 @@ namespace Application.Activties
 
                 _mapper.Map(request.Activity, activity);
 
-                var result = await _context.SaveChangesAsync() > 0;
+                var result = await _context.SaveChangesAsync(cancellationToken) > 0;
 
                 if (!result) return Result<Unit>.Failure("Failed to update activity");
 

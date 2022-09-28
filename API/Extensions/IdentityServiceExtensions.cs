@@ -1,5 +1,5 @@
 ﻿using API.Services;
-using Domain;
+using Domain.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
@@ -32,6 +32,7 @@ namespace API.Extensions
                         ValidateAudience = false
                     };
                 });
+
             services.AddScoped<TokenService>();
 
             return services;

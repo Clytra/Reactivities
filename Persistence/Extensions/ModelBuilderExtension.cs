@@ -1,5 +1,4 @@
-﻿using Domain;
-using Microsoft.AspNetCore.Identity;
+﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Persistence.Extensions

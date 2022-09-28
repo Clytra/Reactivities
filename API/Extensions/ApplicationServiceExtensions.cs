@@ -1,8 +1,6 @@
-﻿using Application.Activties;
-using Application.Core;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
-using Persistence;
+﻿using Application.Interfaces;
+using Infrastructure.Security;
+using Microsoft.OpenApi.Models;
 
 namespace API.Extensions
 {
@@ -11,30 +9,41 @@ namespace API.Extensions
         public static IServiceCollection AddApplicationServices
             (this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddSwaggerGen();
-
-            // TODO: Db service providers with migration
-
-            #region Register Containers
-
-            services.AddDbContext<DataContext>(opt =>
+            // TODO: TermsOfService + License
+            services.AddSwaggerGen(swagger =>
             {
-                opt.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
-            });
-
-            #endregion
-
-            services.AddCors(opt =>
-            {
-                opt.AddPolicy("CorsPolicy", policy =>
+                swagger.SwaggerDoc("v1",
+                new OpenApiInfo
                 {
-                    policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
+                    Title = "Reactivities",
+                    Version = "v1",
+                    TermsOfService = new Uri(""),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Karolina",
+                        Email = "karolina.agata.kowalska@gmail.com",
+                        Url = new Uri("")
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "",
+                        Url = new Uri("")
+                    }
                 });
+                var filePath = Path.Combine(AppContext.BaseDirectory, "Reactivities.xml");
+                swagger.IncludeXmlComments(filePath);
             });
 
-            services.AddMediatR(typeof(List.Handler).Assembly);
+            services.AddHealthChecks();
 
-            services.AddAutoMapper(typeof(MappingProfiles).Assembly);
+            services.AddCors(options =>
+                options.AddPolicy(name: "CorsPolicy",
+                builder =>
+                {
+                    builder.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
+                }));
+
+            services.AddScoped<IUserAccessor, UserAccessor>();
 
             return services;
         }
